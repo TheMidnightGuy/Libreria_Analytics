@@ -1,0 +1,24 @@
+[project]
+name = "fastapi-quickstart"
+version = "0.1.0"
+description = "Proyecto Libreria Analytics"
+authors = [
+    { name="Benjamin.P" }
+]
+
+#Poetry config
+[tool.poetry]
+name = "proyecto_dependencias_intactas"
+version = "0.1.0"
+description = "Dependencias para libreria de analytics"
+packages = [{include = "app"}]
+
+[tool.poetry.dependencies]
+python = "3.12.0"
+
+#System config
+#Usamos poetry
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+

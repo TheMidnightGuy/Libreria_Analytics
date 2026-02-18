@@ -1,0 +1,48 @@
+#Workflow_template_libreria_analytics
+#---
+#¿Como funciona un WORKFLOW en GitHub Actions?
+#Un workflow es un proceso automatizado configurable que ejecuta uno o más jobs. 
+#Los workflow están definidos en un archivo YAML dentro del repositorio el cual se 
+#activa cuando se gatilla (trigger) un evento dentro del repositorio o pueden ser 
+#gatillados manualmente o dentro de una fecha.
+#---
+#Su ruta dentro del repositorio siempre debe ser ./.github/workflows/
+
+#Estructura de archivo .Yaml (.yml)
+#Ejemplo
+
+name: Workflow Python #Identificador de workflow.
+run-name: ${{github.actor}} esta automatizando Python! #Identificador de Run
+on: [push, pull_request] #En que momento queremos que se ejecute el workflow
+jobs: 
+    #JOB_N1
+    Python_SetUp:
+        runs-on: ubuntu-latest #Maquina virtual que ejecuta el JOB "ubuntu-latest" es la opción por defecto.
+        #Pasos de este JOB. Son las acciones que queremos ejecutar. En orden secuencial.
+        steps:
+            - name: Chequeo de código           #Primer paso.
+              uses: actions/checkout@v4             #Chequeo de código con checkout@v4
+            - name: Configurar Python           #Segundo paso
+              uses: actions/setup-python@v4         #SetUp de Python con setup-python@v4
+              with:
+                python-version: "3.12"          #Instalamos y validamos que sea la versión 3.12
+    #JOB_N2
+    Dependencias:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Chequeo de código               #Primer paso
+              uses: actions/checkout@v4                 #Chequeo de código con checkout@v4
+            - name: Instalar dependencias           #Segundo paso
+              run: pip install -r requirements.txt      #Instalamos las dependencias definidas en el proyecto
+    #JOB_N3
+    Docker:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Chequeo de código               #Primer paso
+              uses: actions/checkout@v4                 #Chequeo de código con checkout@v4
+            - name: Crear contenedor Docker         #Segundo paso
+              run: docker build -t my_example_app .     #Creamos un contenedor Docker de nuestra app
+              
+        
+    
+

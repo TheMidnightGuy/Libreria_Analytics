@@ -9,7 +9,7 @@
 #Su ruta dentro del repositorio siempre debe ser ./.github/workflows/
 
 #Estructura de archivo .Yaml (.yml)
-#Ejemplo
+#Ejemplo n1
 
 name: Workflow Python #Identificador de workflow.
 run-name: ${{github.actor}} esta automatizando Python! #Identificador de Run

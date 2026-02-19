@@ -1,0 +1,4 @@
+#ignoramos las siguentes carpetas
+#.venv
+.venv/
+.pytest_cache

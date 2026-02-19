@@ -1,0 +1,20 @@
+#Configuración copier
+_min_copier_version: "9.11.3"
+_subdirectory_ : "Template root"
+
+#Preguntas al usuario
+#Nombre del proyecto
+project_name:
+    type: str
+    help: Cual es el nombre de tu proyecto?
+
+#Pregunto si instalo dependencias dentro del templete
+dependencies_install:
+    type: bool
+    help: "¿Instalar dependencias?"
+    default: true
+
+#Instalo las dependencias desde poetry
+_task:
+ - command: ["poetry", "install"]
+   when: dependencies_install

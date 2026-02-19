@@ -1,0 +1,86 @@
+#Workflow CI/CD - FastAPI
+#Definir proceso de automatizacion
+
+name: FastApi CI/CD
+run-name: ${{github.actor}} esta automatizando procesos!
+on: [push]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: themidnightguy/fastapi-quickstart
+
+jobs:
+  #JOB-N1
+  python-poetry:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      attestations: write
+      id-token: write
+#Check
+    steps:
+    - name: Chequeo de código
+      uses: actions/checkout@v4
+#Cache ci/cd
+    - name: Cache de runner en Poetry (Para posterior instalacion de dependencias)
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/pypoetry
+        key: ${{runner.os}}-poetry-${{hashFiles('**/poetry.lock')}}
+        restore-keys: |
+          ${{runner.os}}-poetry    
+#Python
+    - name: Configurar Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.12.0"
+#Poetry
+    - name: Instalar poetry
+      run: pip install poetry
+    - name: Instalar dependencias
+      run: poetry install --no-interaction --no-ansi
+#Pytest
+    - name: Test con pytest
+      run: poetry run pytest --cov=app
+#GHCR
+    - name: LogIn to GHCR (GitHub Container Registry)
+      uses: docker/login-action@v3
+      with:
+            registry: ${{ env.REGISTRY}}
+            username: ${{ github.actor}}
+            password: ${{ secrets.GITHUB_TOKEN}}
+#Docker
+    - name: Build image
+      run: docker build -t ${{env.REGISTRY}}/${{env.IMAGE_NAME}}/my_fastapi_app .
+
+    - name: Push image
+      run: docker push ${{env.REGISTRY}}/${{env.IMAGE_NAME}}/my_fastapi_app
+
+#Deploy servidor
+  #JOB-N2
+  Deploy_Docker_image:
+    needs: python-poetry
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Instalar SSH Keys
+        run: |
+          install -m 600 -D /dev/null ~/.ssh/id_rsa
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          ssh-keyscan -H ${{secrets.SSH_HOST}}  > ~/.ssh/known_hosts
+
+
+      
+
+#FastAPI pendiente despliegue en servidor.
+
+#Consideraciones tras correcta ejecución de workflow.
+# 1. Al reducir cantidad de jobs a solo uno, se mantienen las versiones instaladas de 
+#    python, poetry, pytest y se evita un conflicto de versiones durante la ejecución
+#    del workflow mismo.
+
+# 2. Definir en minusculas el repositorio de GHCR al definir donde se quedara la imagen.
+#    EJ.- themidnightguy/fastapi-quickstart. Evitar mayusculas.
+
+# 3. Cuidado con la sintaxis al crear la imagen Docker y realizar push.

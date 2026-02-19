@@ -1,0 +1,59 @@
+[project]
+name = "fastapi-quickstart"
+version = "0.1.0"
+description = "Proyecto de fastapi automatizado"
+authors = [
+    { name="Benjamin.P" }
+]
+
+#Poetry config
+[tool.poetry]
+name = "proyecto_dependencias_intactas"
+version = "0.1.0"
+description = "Ejemplo con Docker y Poetry"
+packages = [{include = "app"}]
+
+[tool.poetry.dependencies]
+python = "3.12.0"
+pytest = "9.0.2"
+fastapi = "0.128.7"
+uvicorn = "0.40.0"
+coverage = "7.13.4"
+httpx = "0.28.1"
+
+
+
+#PyTest config
+[tool.pytest.ini_options]
+# Carpeta donde buscar tests
+testpaths = ["tests"]
+#pythonpath = ["app"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false
+
+# Opciones por defecto al correr pytest
+# -v                    ->aumenta el nivel de detales en el output
+# --maxfail=3           -> maximo 3 fallos
+# --disable-warnings    -> deshabilita advertencias
+
+addopts = "-v --maxfail=100 --disable-warnings ---cov=src --cov-report=xml --cov-report=html --cov-report=json"
+
+# Marcadores personalizados (ejemplo)
+markers = [
+    "slow: tests que toman más tiempo",
+    "error: tests que validan errores esperados",
+    "integration: marcar tests como test de integracion",
+]
+
+#System config
+#Usamos poetry
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+test = [
+    "pytest-cov (>=7.0.0,<8.0.0)"
+]

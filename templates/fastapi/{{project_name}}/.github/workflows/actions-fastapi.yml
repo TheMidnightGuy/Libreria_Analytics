@@ -59,28 +59,41 @@ jobs:
 
 #Deploy servidor
   #JOB-N2
+  
   Deploy_Docker_image:
     needs: python-poetry
     runs-on: ubuntu-latest
-
     steps:
-      - name: Instalar SSH Keys
-        run: |
-          install -m 600 -D /dev/null ~/.ssh/id_rsa
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          ssh-keyscan -H ${{secrets.SSH_HOST}}  > ~/.ssh/known_hosts
+      - name: Uso de SSH-ACTION
+        uses: appleboy/ssh-action@v1
+        #Se definen los parametros de autentificación
+        with:
+          host: ${{secrets.SSH_HOST}}
+          username: ${{secrets.SSH_USER}}
+          key: ${{secrets.SSH_PRIVATE_KEY}}
+          #¿Que se hara dentro del script?
+          # Los comandos ejecutados dentro del script seran via ssh en orden secuencial.
+          # Se inicia sesión Docker en ghcr.io 
+          # Se hace pull de la imagen
+          # Verifica si existen imagenes o contenedores
+          # Se detiene y remueve el contendor (De existir)
+          # Iniciamos un nuevo contenedor
+          # Validamos que se ejecute correctamente con 'curl'
+          script: |
+            echo "Comandos en OCI"
+            
+            echo "${{ secrets.GITHUB_TOKEN }}" | docker login ${{env.REGISTRY}} -u ${{ github.actor }} --password-stdin
 
+            docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/my_fastapi_app:latest
 
-      
+            docker images -a
+            docker ps -a
 
-#FastAPI pendiente despliegue en servidor.
+            docker stop fastapi-app || true
+            docker rm fastapi-app || true
+            docker run -d --name fastapi-app --restart always -p 80:8000 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/my_fastapi_app:latest
 
-#Consideraciones tras correcta ejecución de workflow.
-# 1. Al reducir cantidad de jobs a solo uno, se mantienen las versiones instaladas de 
-#    python, poetry, pytest y se evita un conflicto de versiones durante la ejecución
-#    del workflow mismo.
+            echo "Esperando que FastAPI inicie..."
+            sleep 10
 
-# 2. Definir en minusculas el repositorio de GHCR al definir donde se quedara la imagen.
-#    EJ.- themidnightguy/fastapi-quickstart. Evitar mayusculas.
-
-# 3. Cuidado con la sintaxis al crear la imagen Docker y realizar push.
+            curl -I http://127.0.0.1:80/docs

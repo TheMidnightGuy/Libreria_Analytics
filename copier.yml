@@ -1,12 +1,12 @@
 #copier.yml - raiz de proyecto
 #Copier configuración
-min_copier_version: 9.11.0 
+min_copier_version: "9.11.0"
 
 #Se listan los templates disponibles
 #y preguntamos al usuario que plantilla desea obtener
 selected_template:
   type: str
-  help: "Selecciona la plantillas que deseas usar:"
+  help: "Selecciona la plantilla que deseas usar:"
   choices:
     - fastapi
     - pytest

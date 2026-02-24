@@ -133,21 +133,19 @@ Ejecuta el comando en la terminal:
 copier copy gh:TheMidnightGuy/Libreria_Analytics .
 ```
 
-2. Interfaz de selección interactiva
+2. Interfaz de selección
 
-Veras un menú donde podras navegar con las flechas del teclado (`↑` `↓`) y confirmar con `Enter`.
+Usuario debe ingresar en texto el nombre de la plantilla que necesita
 ```powershell
-🎤 Selecciona la plantilla que deseas usar:
-❯ projects          # Redirige a templates/projects
-  analytics        # Redirige a templates/analytics
-  tools            # Redirige a templates/tools (archivos individuales)
+🎤 Escribe el nombre de la plantilla que desea usar
+   project-fastapi
 ```
 
 3. Confirmación de creación
 
 Tras responder correctamente se vera el resumen de los archivos generados y la plantilla se habra generado correctamente
 ```powershell
-Copying from template version 1.0.0
+Copying from project-python_app version 1.0.0
     create  app.py
     create  pyproject.toml
     create  Dockerfile

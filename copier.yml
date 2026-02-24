@@ -6,7 +6,7 @@ min_copier_version: "9.11.0"
 #Tipo: project, analytics, tool
 instrucciones:
   type: str
-  help: "|
+  help: "
   
     ------------------------------------------------------
     LIBRERIA DE ANALYTICS
@@ -26,7 +26,7 @@ instrucciones:
 #Preguntamos al usuario que plantilla desea obtener
 selected_template:
   type: str
-  help: "Escribe el nombre de la plantilla que desea usar"
+  help: "Ingresar nombre de la plantilla que desea generar ¡Recordar prefijos antes del nombre de la plantilla!"
   validator: "{{'¡Ingresar nombre valido!' if not selected_template }}"
 
 #subdirectory -> Se obtiene la variable para dirigirse a la plantilla correcta. 

@@ -1,1 +1,15 @@
-_subdirectory: templates/fastapi
+#copier.yml - raiz de proyecto
+#Copier configuración
+min_copier_version: 9.11.0 
+
+#Se listan los templates disponibles
+#y preguntamos al usuario que plantilla desea obtener
+selected_template:
+  type: str
+  help: "Selecciona la plantillas que deseas usar:"
+  choices:
+    - fastapi
+    - pytest
+
+#subdirectory -> Se obtiene la variable para dirigirse a la plantilla correcta. 
+_subdirectory: "templates/{{selected_template}}"

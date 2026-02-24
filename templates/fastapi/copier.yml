@@ -1,6 +1,6 @@
+#copier.yml - fastapi
 #Configuración copier
-_min_copier_version: "9.11.3"
-_subdirectory_ : "Template root"
+_min_copier_version: "9.11.0"
 
 #Preguntas al usuario
 #Nombre del proyecto

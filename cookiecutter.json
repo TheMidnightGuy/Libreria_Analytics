@@ -1,8 +1,0 @@
-{
-"author":"Benjamin Perez B.",
-"github_username":"TheMidnightGuy",
-"project_name": "libreria_analytics",
-"project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
-"project_short_description": "Libreria de analitica con templates y documentación adjunta de distinas herramientas que puedes integrar en tu proyecto.",
-"version":"0.1.0"
-}

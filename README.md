@@ -162,8 +162,8 @@ Copying from project-python_app version 1.0.0
 
 Para facilitar la busqueda y mantenimiento, todas las plantillas siguen una nomenclatura basadas en prefijos:
 - `project-`: Plantillas de proyectos completos (Archivos base, estructuras de carpetas, CI/CD...)
-- `analytics`: Dashboards y herramientas de ánalisis de datos
-- `tools`: Archivos individuales o utilidades
+- `analytics-`: Dashboards y herramientas de ánalisis de datos
+- `tools-`: Archivos individuales o utilidades
 
  Esta estructura permite añadir nuevas plantillas de manera sencilla bajo un prefijo que la identifica.
 

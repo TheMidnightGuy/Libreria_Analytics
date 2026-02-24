@@ -153,3 +153,14 @@ Copying from template version 1.0.0
     create  Dockerfile
     create  .copier-answers.yml
 ```
+
+# Convención de nombres
+
+Para facilitar la busqueda y mantenimiento, todas las plantillas siguen una nomenclatura basadas en prefijos:
+- `project-`: Plantillas de proyectos completos (Archivos base, estructuras de carpetas, CI/CD...)
+- `analytics`: Dashboards y herramientas de ánalisis de datos
+- `tools`: Archivos individuales o utilidades
+
+ Esta estructura permite añadir nuevas plantillas de manera sencilla bajo un prefijo que la identifica.
+
+**Atención:** Aquellos nombres de plantillas que se ingresen sin prefijo terminaran en error al intentar generar una plantilla.

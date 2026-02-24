@@ -1,12 +1,12 @@
 # Libreria Analytics
 
-##Índice
-*[¿Qué es?](#qué-es)
-*[Instalación](#instalación)
-*[Como usar](#como-usar)
-*[Crear plantilla](#crear-una-plantilla)
-*[Obtener plantilla](#obtener-una-plantilla)
-*[Flujo de selección y generación](#flujo-de-selección-y-generación)
+## Índice
+* [¿Qué es?](#qué-es)
+* [Instalación](#instalación)
+* [Como usar](#como-usar)
+* [Crear plantilla](#crear-una-plantilla)
+* [Obtener plantilla](#obtener-una-plantilla)
+* [Flujo de selección y generación](#flujo-de-selección-y-generación)
 
 ## ¿Qué es?
 Un ecosistema centralizado de archivos diseñado para estandarizar el desarrollo de proyectos. Encapsula estructuras reutilizables permitiendo que cualquier usuario pueda utilizarlo como base solida y probada.
@@ -15,16 +15,15 @@ Un ecosistema centralizado de archivos diseñado para estandarizar el desarrollo
 El objetivo principal de este repositorio es acceder a plantillas de archivos y/o proyectos de manera sencilla.
 Mediante el uso de la herramienta **Copier** este repositorio permite:
 
-- Estandarización: Garantiza que todos los proyectos se guien bajo un estandar definido.
-- Agilidad: Desplegar un entorno de trabajo completo en cuestión de segundos mediante sencillos comandos.
-- Mantenibilidad: Facilitar la actualización de proyectos cuando los estandares se modernizan.
+- **Estandarización:** Garantiza que todos los proyectos se guien bajo un estandar definido.
+- **Agilidad:** Desplegar un entorno de trabajo completo en cuestión de segundos mediante sencillos comandos.
+- **Mantenibilidad:** Facilitar la actualización de proyectos cuando los estandares se modernizan.
 
----
 # Instalación
 
 ### Prerequisitos
 
-Se requiere tener instalado ciertos componentes previo instalación de Copier.
+Se requiere tener instalado ciertos componentes previo instalación de **Copier**.
 
 - Python en versión 3.10 o superior
 - Git en versión 2.27 o superior
@@ -39,7 +38,7 @@ Se requiere tener instalado ciertos componentes previo instalación de Copier.
 ```powershell
 Estructura de carpetas estandar
 
-		📁 Templates ->                 # Nombre de mi proyecto original
+		📁 Templates                    # Nombre de mi proyecto original
 		├── 📁 fastapi                  # Carpeta con nombre configurable para plantilla
 		│   ├──  "copier.yaml"          # Archivo de configuración Copier
 		│   ├──  app.py                 # Archivos del proyecto
@@ -48,7 +47,7 @@ Estructura de carpetas estandar
 		│   └──  .gitignore                  	
 
 ```
----
+
 # ¿Como usar?
 
 Contamos con dos formas de uso principales
@@ -64,7 +63,7 @@ archivo de configuración a la hora de crear una plantilla.
 Todo lo que este en la misma ruta que este archivo sera utilizado para crear una plantilla
 
 ```yaml
-#copier.yml - raiz de proyecto
+#copier.yml
 #Copier configuración
 min_copier_version: "9.11.0"
 
@@ -106,7 +105,7 @@ Podemos generar un proyecto a partir de una plantilla mediante la herramienta CL
 copier copy ruta/de/origen ruta/de/destino
 ```
 
-Esto funciona para local como para repositorio en GitHub.
+Esto funciona tanto en local como repositorios en GitHub.
 Ejemplos
 - Local:
 ```powershell
@@ -128,12 +127,14 @@ Al ejecutar el comando principal `copier copy` para obtener una plantilla, entra
 A continuación se detalla el paso a paso a seguir.
 
 1. Comando de generación
+
 Ejecuta el comando en la terminal:
 ```powershell
 copier copy gh:TheMidnightGuy/Libreria_Analytics .
 ```
 
-2. Interfaz de selección interativa
+2. Interfaz de selección interactiva
+
 Veras un menú donde podras navegar con las flechas del teclado (`↑` `↓`) y confirmar con `Enter`.
 ```powershell
 🎤 Selecciona la plantilla que deseas usar:
@@ -143,6 +144,7 @@ Veras un menú donde podras navegar con las flechas del teclado (`↑` `↓`) y 
 ```
 
 3. Confirmación de creación
+
 Tras responder correctamente se vera el resumen de los archivos generados y la plantilla se habra generado correctamente
 ```powershell
 Copying from template version 1.0.0

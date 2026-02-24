@@ -63,36 +63,42 @@ archivo de configuración a la hora de crear una plantilla.
 Todo lo que este en la misma ruta que este archivo sera utilizado para crear una plantilla
 
 ```yaml
-#copier.yml
+#copier.yml - main
 #Copier configuración
 min_copier_version: "9.11.0"
 
-#Se listan los templates disponibles
-#y preguntamos al usuario que plantilla desea obtener
+#Formato: tipo + nombre_template
+#Tipo: project, analytics, tool
+instrucciones:
+  type: str
+  help: "
+  
+    ------------------------------------------------------
+    LIBRERIA DE ANALYTICS
+
+    Formato de selección:
+    * project-  : Estructura completa de un proyecto
+    * analytics : Dashboards y herramientas de analisis
+    * tool      : Archivos individuales o utilidades
+
+    (ej: project-pytest / analytics-grafana / tool-docker)
+
+    Presiona ENTER para continuar...
+    ------------------------------------------------------"
+  default: ok
+
+#Listado de templates disponible en repositorio.
+#Preguntamos al usuario que plantilla desea obtener
 selected_template:
   type: str
-  help: "Selecciona la plantilla que deseas usar:"
-  choices:
-    - fastapi
-    - pytest
+  help: "Ingresar nombre de la plantilla que desea generar ¡Recordar prefijos antes del nombre de la plantilla!"
+  validator: "{{'¡Ingresar nombre valido!' if not selected_template }}"
 
-#subdirectory -> Se obtiene la variable para dirigirse a la plantilla correcta.
-# Se dirige a la ruta dentro del proyecto.
+#subdirectory -> Se obtiene la variable para dirigirse a la plantilla correcta. 
 _subdirectory: "templates/{{selected_template}}"
 
-#Pregunto si instalo dependencias dentro del templete
-dependencies_install:
-    type: bool
-    help: "¿Instalar dependencias?"
-    default: true
-
-#Instalo las dependencias desde poetry
-_task:
- - command: ["poetry", "install"]
-   when: dependencies_install
-
 #Se crea un archivo que guarda todas las respuestas cuando el template fue creado.
-#Este es necesario para en el futuro usar "copier update".
+#Este es necesario para en el futuro usar "> copier update".
 _answers_file: .mycustom-answers.yml
 
 ```

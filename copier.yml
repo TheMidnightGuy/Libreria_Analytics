@@ -13,10 +13,10 @@ instrucciones:
 
     Formato de selección:
     * project-  : Estructura completa de un proyecto
-    * analytics : Dashboards y herramientas de analisis
-    * tool      : Archivos individuales o utilidades
+    * analytics- : Dashboards y herramientas de analisis
+    * tools-      : Archivos individuales o utilidades
 
-    (ej: project-pytest / analytics-grafana / tool-docker)
+    (ej: project-pytest / analytics-grafana / tools-docker)
 
     Presiona ENTER para continuar...
     ------------------------------------------------------"

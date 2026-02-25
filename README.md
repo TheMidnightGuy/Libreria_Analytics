@@ -139,7 +139,23 @@ Ejecuta el comando en la terminal:
 copier copy gh:TheMidnightGuy/Libreria_Analytics .
 ```
 
-2. Interfaz de selección
+2. Convención de nombres
+```powershell
+    ------------------------------------------------------
+    LIBRERIA DE ANALYTICS
+
+    Formato de selección:
+    * project-  : Estructura completa de un proyecto
+    * analytics- : Dashboards y herramientas de analisis
+    * tools-      : Archivos individuales o utilidades
+
+    (ej: project-pytest / analytics-grafana / tools-docker)
+
+    Presiona ENTER para continuar...
+    ------------------------------------------------------"
+```
+
+3. Interfaz de selección
 
 Usuario debe ingresar en texto el nombre del template que necesita
 ```powershell
@@ -147,7 +163,7 @@ Usuario debe ingresar en texto el nombre del template que necesita
    project-fastapi
 ```
 
-3. Confirmación de creación
+4. Confirmación de creación
 
 Tras responder correctamente se vera el resumen de los archivos generados y el template se habra generado correctamente
 ```powershell

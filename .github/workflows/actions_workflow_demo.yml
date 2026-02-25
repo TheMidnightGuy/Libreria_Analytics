@@ -40,8 +40,8 @@ jobs:
         steps:
             - name: Chequeo de código               #Primer paso
               uses: actions/checkout@v4                 #Chequeo de código con checkout@v4
-            - name: Crear contenedor Docker         #Segundo paso
-              run: docker build -t my_example_app .     #Creamos un contenedor Docker de nuestra app
+#            - name: Crear contenedor Docker         #Segundo paso
+#              run: docker build -t my_example_app .     #Creamos un contenedor Docker de nuestra app
               
         
     

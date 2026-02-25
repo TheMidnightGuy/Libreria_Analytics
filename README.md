@@ -4,8 +4,8 @@
 * [¿Qué es?](#qué-es)
 * [Instalación](#instalación)
 * [Como usar](#como-usar)
-* [Crear plantilla](#crear-una-plantilla)
-* [Obtener plantilla](#obtener-una-plantilla)
+* [Crear template](#crear-un-template)
+* [Obtener template](#obtener-un-template)
 * [Flujo de selección y generación](#flujo-de-selección-y-generación)
 
 ## ¿Qué es?
@@ -104,7 +104,7 @@ _answers_file: .mycustom-answers.yml
 ```
 
 ## Obtener un template
-Tenemos distintas maneras de obtener plantillas pero ambas siguen la misma lógica
+Tenemos distintas maneras de obtener templates pero ambas siguen la misma lógica
 
 Podemos generar un proyecto a partir de un template mediante la herramienta CLI `copier`
 ```powershell
@@ -160,11 +160,11 @@ Copying from project-python_app version 1.0.0
 
 # Convención de nombres
 
-Para facilitar la busqueda y mantenimiento, todas las plantillas siguen una nomenclatura basadas en prefijos:
-- `project-`: Plantillas de proyectos completos (Archivos base, estructuras de carpetas, CI/CD...)
+Para facilitar la busqueda y mantenimiento, todos los templates siguen una nomenclatura basadas en prefijos:
+- `project-`: Templates de proyectos completos (Archivos base, estructuras de carpetas, CI/CD...)
 - `analytics-`: Dashboards y herramientas de ánalisis de datos
 - `tools-`: Archivos individuales o utilidades
 
- Esta estructura permite añadir nuevas plantillas de manera sencilla bajo un prefijo que la identifica.
+ Esta estructura permite añadir nuevos templates de manera sencilla bajo un prefijo que la identifica.
 
-**Atención:** Aquellos nombres de plantillas que se ingresen sin prefijo terminaran en error al intentar generar un template
+**Atención:** Aquellos nombres de templates que se ingresen sin prefijo terminaran en error al intentar generar un template

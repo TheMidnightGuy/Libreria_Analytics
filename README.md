@@ -21,7 +21,7 @@ Mediante el uso de la herramienta **Copier** este repositorio permite:
 
 # Instalación
 
-### Prerequisitos
+### Prerrequisitos
 
 Se requiere tener instalado ciertos componentes previo instalación de **Copier**.
 

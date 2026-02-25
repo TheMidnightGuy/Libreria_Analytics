@@ -3,7 +3,7 @@
 ## Índice
 * [¿Qué es?](#qué-es)
 * [Instalación](#instalación)
-* [Como usar](#como-usar)
+* [Como usar](#cómo-usar)
 * [Crear template](#crear-un-template)
 * [Obtener template](#obtener-un-template)
 * [Flujo de selección y generación](#flujo-de-selección-y-generación)
@@ -11,13 +11,13 @@
 ## ¿Qué es?
 Un ecosistema centralizado de archivos diseñado para estandarizar el desarrollo de proyectos. Encapsula estructuras reutilizables permitiendo que cualquier usuario pueda utilizarlo como base solida y probada.
 
-## Proposito
+## Propósito
 El objetivo principal de este repositorio es acceder a templates de archivos y/o proyectos de manera sencilla.
 Mediante el uso de la herramienta **Copier** este repositorio permite:
 
-- **Estandarización:** Garantiza que todos los proyectos se guien bajo un estandar definido.
+- **Estandarización:** Garantiza que todos los proyectos se guíen bajo un estándar definido.
 - **Agilidad:** Desplegar un entorno de trabajo completo en cuestión de segundos mediante sencillos comandos.
-- **Mantenibilidad:** Facilitar la actualización de proyectos cuando los estandares se modernizan.
+- **Mantenibilidad:** Facilitar la actualización de proyectos cuando los estándares se modernizan.
 
 # Instalación
 
@@ -48,7 +48,7 @@ Estructura de carpetas estandar
 
 ```
 
-# ¿Como usar?
+# ¿Cómo usar?
 
 Contamos con dos formas de uso principales
 - Crear un template
@@ -57,10 +57,10 @@ Contamos con dos formas de uso principales
 A continuación veremos el paso a paso de cada uno.
 
 ## Crear un template
-Antes de empezar necesitamos del archivo `copier.yml`, este sera nuestro
+Antes de empezar necesitamos del archivo `copier.yml`, este será nuestro
 archivo de configuración a la hora de crear un template.
 
-Todo lo que este en la misma ruta que este archivo sera utilizado para crear un template
+Todo lo que este en la misma ruta que este archivo será utilizado para crear un template
 
 ```yaml
 #copier.yml - main
@@ -128,7 +128,7 @@ copier copy gh:TheMidnightGuy/Libreria_Analytics .
 ---
 
 # Flujo de selección y generación
-Al ejecutar el comando principal `copier copy` para obtener un template, entraras en un asistente dentro de la consola de tipo pregunta respuesta. **Copier** se encargara de redigirir la instalación al subdirectorio correcto.
+Al ejecutar el comando principal `copier copy` para obtener un template, entraras en un asistente dentro de la consola de tipo pregunta respuesta. **Copier** se encargara de redirigir la instalación al subdirectorio correcto.
 
 A continuación se detalla el paso a paso a seguir.
 
@@ -176,9 +176,9 @@ Copying from project-python_app version 1.0.0
 
 # Convención de nombres
 
-Para facilitar la busqueda y mantenimiento, todos los templates siguen una nomenclatura basadas en prefijos:
+Para facilitar la búsqueda y mantenimiento, todos los templates siguen una nomenclatura basadas en prefijos:
 - `project-`: Templates de proyectos completos (Archivos base, estructuras de carpetas, CI/CD...)
-- `analytics-`: Dashboards y herramientas de ánalisis de datos
+- `analytics-`: Dashboards y herramientas de análisis de datos
 - `tools-`: Archivos individuales o utilidades
 
  Esta estructura permite añadir nuevos templates de manera sencilla bajo un prefijo que la identifica.

@@ -12,7 +12,7 @@
 Un ecosistema centralizado de archivos diseñado para estandarizar el desarrollo de proyectos. Encapsula estructuras reutilizables permitiendo que cualquier usuario pueda utilizarlo como base solida y probada.
 
 ## Proposito
-El objetivo principal de este repositorio es acceder a plantillas de archivos y/o proyectos de manera sencilla.
+El objetivo principal de este repositorio es acceder a templates de archivos y/o proyectos de manera sencilla.
 Mediante el uso de la herramienta **Copier** este repositorio permite:
 
 - **Estandarización:** Garantiza que todos los proyectos se guien bajo un estandar definido.
@@ -39,7 +39,7 @@ Se requiere tener instalado ciertos componentes previo instalación de **Copier*
 Estructura de carpetas estandar
 
 		📁 Templates                    # Nombre de mi proyecto original
-		├── 📁 fastapi                  # Carpeta con nombre configurable para plantilla
+		├── 📁 fastapi                  # Carpeta con nombre configurable para template
 		│   ├──  "copier.yaml"          # Archivo de configuración Copier
 		│   ├──  app.py                 # Archivos del proyecto
 		│   ├──  pyproject.toml
@@ -51,16 +51,16 @@ Estructura de carpetas estandar
 # ¿Como usar?
 
 Contamos con dos formas de uso principales
-- Crear una plantilla
+- Crear un template
 - Obtener un template
 
 A continuación veremos el paso a paso de cada uno.
 
-## Crear una plantilla
+## Crear un template
 Antes de empezar necesitamos del archivo `copier.yml`, este sera nuestro
-archivo de configuración a la hora de crear una plantilla.
+archivo de configuración a la hora de crear un template.
 
-Todo lo que este en la misma ruta que este archivo sera utilizado para crear una plantilla
+Todo lo que este en la misma ruta que este archivo sera utilizado para crear un template
 
 ```yaml
 #copier.yml - main
@@ -91,10 +91,10 @@ instrucciones:
 #Preguntamos al usuario que plantilla desea obtener
 selected_template:
   type: str
-  help: "Ingresar nombre de la plantilla que desea generar ¡Recordar prefijos antes del nombre de la plantilla!"
+  help: "Ingresar nombre de template que desea generar ¡Recordar prefijos antes del nombre del template!"
   validator: "{{'¡Ingresar nombre valido!' if not selected_template }}"
 
-#subdirectory -> Se obtiene la variable para dirigirse a la plantilla correcta. 
+#subdirectory -> Se obtiene la variable para dirigirse al template correcto. 
 _subdirectory: "templates/{{selected_template}}"
 
 #Se crea un archivo que guarda todas las respuestas cuando el template fue creado.
@@ -103,10 +103,10 @@ _answers_file: .mycustom-answers.yml
 
 ```
 
-## Obtener una plantilla
+## Obtener un template
 Tenemos distintas maneras de obtener plantillas pero ambas siguen la misma lógica
 
-Podemos generar un proyecto a partir de una plantilla mediante la herramienta CLI `copier`
+Podemos generar un proyecto a partir de un template mediante la herramienta CLI `copier`
 ```powershell
 copier copy ruta/de/origen ruta/de/destino
 ```
@@ -128,7 +128,7 @@ copier copy gh:TheMidnightGuy/Libreria_Analytics .
 ---
 
 # Flujo de selección y generación
-Al ejecutar el comando principal `copier copy` para obtener una plantilla, entraras en un asistente dentro de la consola de tipo pregunta respuesta. **Copier** se encargara de redigirir la instalación al subdirectorio correcto.
+Al ejecutar el comando principal `copier copy` para obtener un template, entraras en un asistente dentro de la consola de tipo pregunta respuesta. **Copier** se encargara de redigirir la instalación al subdirectorio correcto.
 
 A continuación se detalla el paso a paso a seguir.
 
@@ -141,15 +141,15 @@ copier copy gh:TheMidnightGuy/Libreria_Analytics .
 
 2. Interfaz de selección
 
-Usuario debe ingresar en texto el nombre de la plantilla que necesita
+Usuario debe ingresar en texto el nombre del template que necesita
 ```powershell
-🎤 Escribe el nombre de la plantilla que desea usar
+🎤 Escribe el nombre del template que desea usar
    project-fastapi
 ```
 
 3. Confirmación de creación
 
-Tras responder correctamente se vera el resumen de los archivos generados y la plantilla se habra generado correctamente
+Tras responder correctamente se vera el resumen de los archivos generados y el template se habra generado correctamente
 ```powershell
 Copying from project-python_app version 1.0.0
     create  app.py
@@ -167,4 +167,4 @@ Para facilitar la busqueda y mantenimiento, todas las plantillas siguen una nome
 
  Esta estructura permite añadir nuevas plantillas de manera sencilla bajo un prefijo que la identifica.
 
-**Atención:** Aquellos nombres de plantillas que se ingresen sin prefijo terminaran en error al intentar generar una plantilla.
+**Atención:** Aquellos nombres de plantillas que se ingresen sin prefijo terminaran en error al intentar generar un template

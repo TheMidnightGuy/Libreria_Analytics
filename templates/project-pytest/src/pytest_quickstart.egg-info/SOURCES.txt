@@ -1,0 +1,8 @@
+pyproject.toml
+src/__init__.py
+src/operaciones.py
+src/pytest_quickstart.egg-info/PKG-INFO
+src/pytest_quickstart.egg-info/SOURCES.txt
+src/pytest_quickstart.egg-info/dependency_links.txt
+src/pytest_quickstart.egg-info/requires.txt
+src/pytest_quickstart.egg-info/top_level.txt

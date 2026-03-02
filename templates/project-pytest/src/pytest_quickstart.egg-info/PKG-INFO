@@ -1,0 +1,8 @@
+Metadata-Version: 2.4
+Name: pytest_quickstart
+Version: 0.1.0
+Summary: Proyecto de ejemplo con Pytest orientado a revisión de outputs
+Author: Benjamin.P
+Requires-Python: >=3.10
+Requires-Dist: pytest
+Requires-Dist: pytest-cov

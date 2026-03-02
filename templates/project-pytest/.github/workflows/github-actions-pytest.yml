@@ -1,0 +1,29 @@
+#Workflow de pytest 
+#1-Instalación de dependencias
+#   -pyproject.yml
+#2-Prueba de código
+#   -pruebas positivas, outputs esperados
+#   -generación de reportes
+
+
+name: PyTest Primer workflow
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: [push]
+jobs:
+  Configurar_proyecto:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Configurar python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Instalar dependencias
+        run: pip install . 
+      - name: Test con pytest
+        run: pytest --cov=src --cov-report=xml --cov-report=html --cov-report=json
+      - name: guardar reportes
+        uses: actions/upload-artifact@v4
+        with:
+          name: reportes-cobertura
+          path: reports/coverage/

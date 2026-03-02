@@ -1,0 +1,65 @@
+#docker-compose.yml
+#El archivo docker-compose es un fichero que reune todos los comandos que normalmente se harian de manera manual
+#via CLI a traves de un solo comando. (docker compose up).
+
+#Este esta estructurado de manera secuencial el cual se pueden definir:
+#-----------
+# Servicios:        Se detalla el funcionamiento de un contenedor, como esta compuesta la aplicación (frontend, backend, database). 
+# Volumenes:        Memoria del contenedor Docker. Permite persistencia de datos.
+# Secretos:         Donde se guardan llaves privadas (SSH,API,etc) o certificados de manera segura. Distintas a las variables de entorno ya que estas no aparecen en los logs durante una ejecución.
+# Configuraciones:  Permite trabajar con archivos de configuración mientras no afectan la reconstrucción de la imagen Docker.
+# Networking:       Red (normalmente privada) que permite la comunicación de los servicios entre si. De igual manera se puede trabajar con distintos contenedores en una misma red.
+
+#Estructura docker-compose.yml
+#--- Modificar de ser necesario ---
+
+#Nombres de servicios (Varia según contexto)
+services:
+    servicio_uno:
+      image: example/app-web # Configuración de build imagen Docker
+      ports: # Asignamos red y puertos
+        - "80:80"
+      networks:
+        - red_interna   
+      volumes: # Asignamos volumen
+        - datos_db_local
+        - datos_db_host
+      secrets: # Asignamos secretos y certificados
+        - api-host.key
+        - ssh-key
+        - server-certificate
+      environment:
+        - APP_ENV=desarrollo
+
+#Secretos. Se definen los secretos para su uso dentro de docker compose.
+secrets:
+  ssh-key:
+    external: true
+  api-host-key:
+    external: true
+  server-certificate:
+    external: true
+      
+#Volumenes. Se monta un disco ya sea local o en un host remoto. Solo con definirlos se aplica una configuración por defecto
+volumes:
+  datos_db_host:  #configuración por defecto
+  datos_db_local: #Configuración personalizada
+    driver: local
+    driver_opts:
+      type: noe
+      device: /ruta/de/volumen
+
+
+#Red. (Si no se define una red pero hay más de un servicio se crea un red por defecto)
+networks:
+  red_interna: {}
+
+#Comandos más comunes
+# Se listan los comandos que podemos usar con `docker-compose.yml`:
+
+# `docker compose up`:    Levanta todos los servicios definidos en el fichero.
+# `docker compose up -d`: Levanta los servicios es segundo plano.
+# `docker compose down`:  Detiene y elimina los servicios (contenedores).
+# `docker compose ps`:    Lista el estado de los servicios.
+# `docker compose logs`:  Muestra los logs del servicio.
+# `docker compose exec <servicio> <comando>`: Permite ejecutar comandos en un servicio en especifico.
